@@ -16,7 +16,6 @@ const Home = () => {
         components, and a configurable cheatsheet.
       </p>
       <ColorWall />
-      <Feed />
     </section>
   );
 };

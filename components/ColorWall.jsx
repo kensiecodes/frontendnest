@@ -372,9 +372,12 @@ const ColorWall = () => {
 const ColorSet = ({ colorKey, blocksKey }) => {
   return (
     <div className="flex lg:flex-col">
-      <p className="text-right mt-3 mr-1 lg:mr-0 lg:mb-2 lg:text-center lg:mt-0 text-xs w-12 lg:w-12">
+      <div
+        style={{ backgroundColor: blocksKey[5].hex, color: blocksKey[2].hex }}
+        className="lg:rounded-t  max-lg:rounded-l text-right pt-3 lg:pt-1 pr-1 lg:mr-0 lg:pb-2 lg:text-center lg:mt-0 text-xs w-12 lg:w-12"
+      >
         {colorKey}
-      </p>
+      </div>
 
       <div className="flex lg:flex-col">
         {blocksKey.map((colorSet, index) => {
