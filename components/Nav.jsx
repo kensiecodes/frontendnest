@@ -28,7 +28,9 @@ const Nav = () => {
           height={30}
           className="object-contain"
         />
-        <p className="logo_text">Tailwind Nest</p>
+        <p className="dmsans text-2xl ">
+          Frontend<span className="poppins text-cyan-500">Nest</span>
+        </p>
       </Link>
 
       {/* Desktop Navigation */}

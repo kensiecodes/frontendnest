@@ -11,7 +11,15 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en">
-      <body>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@0;1&family=Martian+Mono:wght@300&family=Poppins:wght@800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="dmsans">
         <Provider>
           <div className="main">
             <div className="gradient"></div>

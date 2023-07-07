@@ -1,5 +1,6 @@
 import Feed from "@components/Feed";
-import ColorWall from "../components/ColorWall";
+import ColorWall from "@components/ColorWall";
+import PackageCard from "@components/PackageCard";
 
 // change Google domain info on cloud console
 
@@ -9,15 +10,30 @@ const Home = () => {
       <h1 className="head_text text-center">
         Supercharge your
         <br className="max-md:hidden" />
-        <span className="orange_gradient text-center">Tailwind workflow</span>
+        <span className="orange_gradient text-center">frontend workflow</span>
       </h1>
       <p className="desc text-center">
-        Tailwind Nest is a one-stop tool for Tailwind config files, palettes,
-        components, and a configurable cheatsheet.
+        Nest is a one-stop suite for config files, palettes, components, and a
+        configurable cheatsheets for common frontend packages and tools.
       </p>
-      <ColorWall />
+      <section className="max-sm:mx-16 mt-10 grid gap-2 lg:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <PackageCard
+          pkgName="Tailwind Toolkit"
+          pageLink="/colorwall"
+          pkgPages={[
+            {
+              src: "/images/screenshot.png",
+              title: "Color Palette",
+              desc: "A handy reference for the default Tailwind color palettes",
+            },
+          ]}
+        />
+      </section>
     </section>
   );
 };
 
 export default Home;
+
+//pkgName, pkgPages
+//pkgpages => img={page.src} title={page.title} desc={page.desc}

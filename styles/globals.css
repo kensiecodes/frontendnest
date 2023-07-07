@@ -180,3 +180,15 @@
 #b {
   display: none;
 }
+
+.martian {
+  font-family: "Martian Mono", monospace;
+}
+
+.dmsans {
+  font-family: "DM Sans", sans-serif;
+}
+
+.poppins {
+  font-family: "Poppins", sans-serif;
+}

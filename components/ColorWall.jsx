@@ -355,7 +355,7 @@ const colors = [
 
 const ColorWall = () => {
   return (
-    <div className="mt-10 flex flex-col lg:flex-row">
+    <div className="mb-10 mt-10 flex flex-col lg:flex-row">
       {colors.map((el, index) => {
         return (
           <ColorSet
