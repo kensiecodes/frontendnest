@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 const colors = [
   {
     color: "slate",
@@ -354,22 +358,27 @@ const colors = [
 ];
 
 const ColorWall = () => {
+  const [clipboard, setClipboard] = useState("");
   return (
-    <div className="mb-10 mt-10 flex flex-col lg:flex-row">
-      {colors.map((el, index) => {
-        return (
-          <ColorSet
-            key={`colorSet-${index}`}
-            colorKey={el.color}
-            blocksKey={el.blocks}
-          />
-        );
-      })}
-    </div>
+    <>
+      <div className="mb-10 mt-10 flex flex-col lg:flex-row">
+        {colors.map((el, index) => {
+          return (
+            <ColorSet
+              key={`colorSet-${index}`}
+              colorKey={el.color}
+              blocksKey={el.blocks}
+              setClipboard={setClipboard}
+            />
+          );
+        })}
+      </div>
+      <p>{clipboard}</p>
+    </>
   );
 };
 
-const ColorSet = ({ colorKey, blocksKey }) => {
+const ColorSet = ({ colorKey, blocksKey, setClipboard }) => {
   return (
     <div className="flex lg:flex-col">
       <div
@@ -393,6 +402,7 @@ const ColorSet = ({ colorKey, blocksKey }) => {
               colorCode={colorSet.code}
               hexCode={colorSet.hex}
               textColor={textColor}
+              setClipboard={setClipboard}
             />
           );
         })}
@@ -401,10 +411,19 @@ const ColorSet = ({ colorKey, blocksKey }) => {
   );
 };
 
-const ColorBlock = ({ colorCode, hexCode, textColor }) => {
+const ColorBlock = ({ colorCode, hexCode, textColor, setClipboard }) => {
+  const copy = () => {
+    navigator.clipboard.writeText(hexCode).then(
+      () => {
+        setInterval(setClipboard("Successfully copied hex code."), 3000);
+      },
+      () => {}
+    );
+  };
   return (
-    <div className="">
+    <div className={hexCode}>
       <div
+        onClick={copy}
         className={`w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center group`}
         style={{ backgroundColor: hexCode, color: textColor }}
       >

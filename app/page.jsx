@@ -6,7 +6,7 @@ import PackageCard from "@components/PackageCard";
 
 const Home = () => {
   return (
-    <section className="w-full flex-center flex-col">
+    <section className="w-full flex-center flex-col ">
       <h1 className="head_text text-center">
         Supercharge your
         <br className="max-md:hidden" />
@@ -25,6 +25,11 @@ const Home = () => {
               src: "/images/screenshot.png",
               title: "Color Palette",
               desc: "A handy reference for the default Tailwind color palettes",
+            },
+            {
+              src: "/images/screenshot.png",
+              title: "Gradient Builder",
+              desc: "A gradient rule generator",
             },
           ]}
         />
