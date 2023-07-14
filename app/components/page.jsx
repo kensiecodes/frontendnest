@@ -1,9 +1,9 @@
-import GradientDirection from "@components/Gradient";
+import GradientUI from "@components/Gradient";
 
 const Component = () => {
   return (
     <>
-      <GradientDirection />
+      <GradientUI />
     </>
   );
 };
