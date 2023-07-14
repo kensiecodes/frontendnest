@@ -46,123 +46,135 @@ const GradientDirection = ({ direction, setDirection }) => {
   console.log(setDirection);
   const [directionType, setDirectionType] = useState("radial");
   return (
-    <div className="bg-slate-500 rounded-md p-4 ">
-      <h2 className="poppins mb-2 ">Gradient Direction</h2>
-      {directionType == "radial" && (
-        <ul className=" grid grid-cols-3 grid-rows-3 ">
-          <DirButton
-            onClick={() =>
-              setDirection(
-                "bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))]"
-              )
-            }
-          >
-            <NorthWest className="" />
-          </DirButton>
+    <div className="bg-slate-500 rounded-md p-4 flex">
+      <div className="flex flex-col items-center justify-center pt-6">
+        <button
+          className="m-1 w-12 h-12 bg-gradient-to-l from-slate-200 to-slate-600 rounded border border-white"
+          onClick={() => setDirectionType("default")}
+        ></button>
+        <button
+          className="m-1 w-12 h-12 bg-g bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-200 to-slate-600 rounded border border-white"
+          onClick={() => setDirectionType("radial")}
+        ></button>
+      </div>
+      <div>
+        <h2 className="poppins mb-2 ">Gradient Direction</h2>
+        {directionType == "radial" && (
+          <ul className=" grid grid-cols-3 grid-rows-3 ">
+            <DirButton
+              onClick={() =>
+                setDirection(
+                  "bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))]"
+                )
+              }
+            >
+              <NorthWest className="" />
+            </DirButton>
 
-          <DirButton
-            onClick={() =>
-              setDirection(
-                "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]"
-              )
-            }
-          >
-            <North className="" />
-          </DirButton>
-          <DirButton
-            onClick={() =>
-              setDirection(
-                "bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))]"
-              )
-            }
-          >
-            <NorthEast className="" />
-          </DirButton>
-          <DirButton
-            onClick={() =>
-              setDirection(
-                "bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))]"
-              )
-            }
-          >
-            <West className="" />
-          </DirButton>
-          <DirButton
-            onClick={() =>
-              setDirection(
-                "bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]"
-              )
-            }
-          >
-            <img src="images/logo.svg" />
-          </DirButton>
-          <DirButton
-            onClick={() =>
-              setDirection(
-                "bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))]"
-              )
-            }
-          >
-            <East className="" />
-          </DirButton>
-          <DirButton
-            onClick={() =>
-              setDirection(
-                "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))]"
-              )
-            }
-          >
-            <SouthWest className="" />
-          </DirButton>
-          <DirButton
-            onClick={() =>
-              setDirection(
-                "bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))]"
-              )
-            }
-          >
-            <South className="" />
-          </DirButton>
-          <DirButton
-            onClick={() =>
-              setDirection(
-                "bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))]"
-              )
-            }
-          >
-            <SouthEast className="" />
-          </DirButton>
-        </ul>
-      )}
-      {directionType == "default" && (
-        <ul className=" grid grid-cols-3 grid-rows-3 ">
-          <DirButton onClick={() => setDirection("bg-gradient-to-tl")}>
-            <NorthWest className="" />
-          </DirButton>
-          <DirButton onClick={() => setDirection("bg-gradient-to-t")}>
-            <North className="" />
-          </DirButton>
-          <DirButton onClick={() => setDirection("bg-gradient-to-tr")}>
-            <NorthEast className="" />
-          </DirButton>
-          <DirButton onClick={() => setDirection("bg-gradient-to-l")}>
-            <West className="" />
-          </DirButton>
-          <li className="w-[30px] "></li>
-          <DirButton onClick={() => setDirection("bg-gradient-to-r")}>
-            <East className="" />
-          </DirButton>
-          <DirButton onClick={() => setDirection("bg-gradient-to-bl")}>
-            <SouthWest className="" />
-          </DirButton>
-          <DirButton onClick={() => setDirection("bg-gradient-to-b")}>
-            <South className="" />
-          </DirButton>
-          <DirButton onClick={() => setDirection("bg-gradient-to-br")}>
-            <SouthEast className="" />
-          </DirButton>
-        </ul>
-      )}
+            <DirButton
+              onClick={() =>
+                setDirection(
+                  "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]"
+                )
+              }
+            >
+              <North className="" />
+            </DirButton>
+            <DirButton
+              onClick={() =>
+                setDirection(
+                  "bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))]"
+                )
+              }
+            >
+              <NorthEast className="" />
+            </DirButton>
+            <DirButton
+              onClick={() =>
+                setDirection(
+                  "bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))]"
+                )
+              }
+            >
+              <West className="" />
+            </DirButton>
+            <DirButton
+              onClick={() =>
+                setDirection(
+                  "bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]"
+                )
+              }
+            >
+              <img src="images/logo.svg" />
+            </DirButton>
+            <DirButton
+              onClick={() =>
+                setDirection(
+                  "bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))]"
+                )
+              }
+            >
+              <East className="" />
+            </DirButton>
+            <DirButton
+              onClick={() =>
+                setDirection(
+                  "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))]"
+                )
+              }
+            >
+              <SouthWest className="" />
+            </DirButton>
+            <DirButton
+              onClick={() =>
+                setDirection(
+                  "bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))]"
+                )
+              }
+            >
+              <South className="" />
+            </DirButton>
+            <DirButton
+              onClick={() =>
+                setDirection(
+                  "bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))]"
+                )
+              }
+            >
+              <SouthEast className="" />
+            </DirButton>
+          </ul>
+        )}
+        {directionType == "default" && (
+          <ul className=" grid grid-cols-3 grid-rows-3 ">
+            <DirButton onClick={() => setDirection("bg-gradient-to-tl")}>
+              <NorthWest className="" />
+            </DirButton>
+            <DirButton onClick={() => setDirection("bg-gradient-to-t")}>
+              <North className="" />
+            </DirButton>
+            <DirButton onClick={() => setDirection("bg-gradient-to-tr")}>
+              <NorthEast className="" />
+            </DirButton>
+            <DirButton onClick={() => setDirection("bg-gradient-to-l")}>
+              <West className="" />
+            </DirButton>
+            <li className="w-[30px] "></li>
+            <DirButton onClick={() => setDirection("bg-gradient-to-r")}>
+              <East className="" />
+            </DirButton>
+            <DirButton onClick={() => setDirection("bg-gradient-to-bl")}>
+              <SouthWest className="" />
+            </DirButton>
+            <DirButton onClick={() => setDirection("bg-gradient-to-b")}>
+              <South className="" />
+            </DirButton>
+            <DirButton onClick={() => setDirection("bg-gradient-to-br")}>
+              <SouthEast className="" />
+            </DirButton>
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
