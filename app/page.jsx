@@ -12,7 +12,7 @@ const Home = () => {
         <br className="max-md:hidden" />
         <span className="orange_gradient text-center">frontend workflow</span>
       </h1>
-      <p className="desc text-center">
+      <p className=" text-center text-white">
         Nest is a one-stop suite for config files, palettes, components, and a
         configurable cheatsheets for common frontend packages and tools.
       </p>
@@ -24,11 +24,13 @@ const Home = () => {
             {
               src: "/images/screenshot.png",
               title: "Color Palette",
+              link: "/colorwall",
               desc: "A handy reference for the default Tailwind color palettes",
             },
             {
               src: "/images/screenshot.png",
               title: "Gradient Builder",
+              link: "gradient",
               desc: "A gradient rule generator",
             },
           ]}

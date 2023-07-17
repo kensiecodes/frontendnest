@@ -3,7 +3,7 @@
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
-const PackageCard = ({ pkgName, pageLink, pkgPages }) => {
+const PackageCard = ({ pkgName, pkgPages }) => {
   return (
     <div className="bg-slate-200 max-w-sm p-4 rounded-md">
       <h1 className="text-2xl text-indigo-700 mb-2">
@@ -16,7 +16,7 @@ const PackageCard = ({ pkgName, pageLink, pkgPages }) => {
             img={page.src}
             title={page.title}
             desc={page.desc}
-            link={pageLink}
+            link={page.link}
           />
         );
       })}
