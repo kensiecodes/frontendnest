@@ -6,7 +6,7 @@ import PackageCard from "@components/PackageCard";
 
 const Home = () => {
   return (
-    <section className="w-full flex-center flex-col ">
+    <section className="w-full flex-center flex-col relative z-0">
       <h1 className="head_text text-center">
         Supercharge your
         <br className="max-md:hidden" />
