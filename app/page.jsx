@@ -6,13 +6,13 @@ import PackageCard from "@components/PackageCard";
 
 const Home = () => {
   return (
-    <section className="w-full flex-center flex-col relative z-0">
+    <section className="w-full flex-center flex-col relative ">
       <h1 className="head_text text-center">
         Supercharge your
         <br className="max-md:hidden" />
         <span className="orange_gradient text-center">frontend workflow</span>
       </h1>
-      <p className=" text-center text-white">
+      <p className="desc text-center text-white">
         Nest is a one-stop suite for config files, palettes, components, and a
         configurable cheatsheets for common frontend packages and tools.
       </p>
@@ -22,13 +22,13 @@ const Home = () => {
           pageLink="/colorwall"
           pkgPages={[
             {
-              src: "/images/screenshot.png",
+              src: "/images/colorwall.png",
               title: "Color Palette",
               link: "/colorwall",
               desc: "A handy reference for the default Tailwind color palettes",
             },
             {
-              src: "/images/screenshot.png",
+              src: "/images/gradient.png",
               title: "Gradient Builder",
               link: "gradient",
               desc: "A gradient rule generator",

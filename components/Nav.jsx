@@ -28,15 +28,15 @@ const Nav = () => {
           height={30}
           className="object-contain"
         />
-        <p className="dmsans text-2xl ">
-          Frontend<span className="poppins text-cyan-500">Nest</span>
+        <p className="dmsans text-2xl text-indigo-400 ">
+          Frontend<span className="poppins">Nest</span>
         </p>
       </Link>
 
       {/* Desktop Navigation */}
       <div className="sm:flex hidden">
         {session?.user ? (
-          <div className="flex gap-3 md:gap-5">
+          <div className="flex gap-3 md:gap-5 hidden">
             <Link href="/create-prompt" className="black_btn">
               Create Post
             </Link>
@@ -50,7 +50,7 @@ const Nav = () => {
                 src={session?.user.image}
                 width={37}
                 height={37}
-                className="rounded-full"
+                className="rounded-full invisible"
                 alt="profile"
               />
             </Link>
@@ -65,7 +65,7 @@ const Nav = () => {
                   onClick={() => {
                     signIn(provider.id);
                   }}
-                  className="black_btn"
+                  className="black_btn invisible"
                 >
                   Sign in
                 </button>

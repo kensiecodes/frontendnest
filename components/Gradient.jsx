@@ -313,7 +313,7 @@ const GradientUI = () => {
   const [lastColor, setLastColor] = useState("to-cyan-300");
   return (
     <>
-      <div className="grid grid-cols-2 relative z-10">
+      <div className="w-full flex flex-col lg:flex-row mx-auto relative z-10">
         <GradientDirection direction={direction} setDirection={setDirection} />
         <ColorSelect
           setFirstColor={setFirstColor}
@@ -339,7 +339,7 @@ const GradientDirection = ({ direction, setDirection }) => {
     return (
       <li className="mb-1 m-auto">
         <button
-          className="bg-gradient-to-br from-teal-500 to-teal-200 drop-shadow-lg hover:filter-none rounded-xl w-10 h-9 border-b border-teal-500 flex justify-center active:translate-y-0.5"
+          className="bg-emerald-300 drop-shadow-lg hover:filter-none rounded-xl w-10 h-9 border-b border-teal-500 flex justify-center active:translate-y-0.5"
           onClick={onClick}
         >
           {children}
@@ -350,7 +350,7 @@ const GradientDirection = ({ direction, setDirection }) => {
 
   const [directionType, setDirectionType] = useState("default");
   return (
-    <div className="bg-slate-100 rounded-2xl p-4 flex-col drop-shadow-lg ">
+    <div className="bg-slate-200 rounded-2xl p-4 flex-col drop-shadow-lg drop-shadow-xl rounded-lg m-5  lg:w-screen h-50">
       <h2 className="poppins text-slate-500 mb-2 text-center">
         Gradient Direction
       </h2>
@@ -561,7 +561,7 @@ const ColorSelect = ({
   setLastColor,
 }) => {
   return (
-    <div className="bg-slate-100 rounded-2xl p-4 flex drop-shadow-lg ">
+    <div className="bg-slate-200 rounded-2xl p-4 flex  drop-shadow-xl rounded-lg m-5  lg:w-screen h-50">
       <ColorDropDown color={firstColor} setColor={setFirstColor} trim={4} />
       <ColorDropDown color={middleColor} setColor={setMiddleColor} trim={3} />
       <ColorDropDown color={lastColor} setColor={setLastColor} trim={2} />
@@ -575,12 +575,12 @@ const GradientBar = ({ direction, firstColor, middleColor, lastColor }) => {
 
   return (
     <div className="w-full flex flex-col lg:flex-row mx-auto">
-      <div className="bg-slate-700 drop-shadow-xl rounded-lg m-5  lg:w-screen h-80">
+      <div className="bg-slate-200 p-10 drop-shadow-xl rounded-lg m-5  lg:w-screen h-80">
         <div
           className={`${direction} ${firstColor} ${blend} ${lastColor} w-full h-full rounded`}
         ></div>
       </div>
-      <div className="text-xs martian drop-shadow-xl bg-slate-700 rounded-lg m-5  lg:w-screen h-80">
+      <div className="text-xs martian drop-shadow-xl bg-slate-200 rounded-lg m-5 text-slate-700 lg:w-screen h-80">
         <p className="p-2 mt-2 mx-2">{gradientClasses}</p>
       </div>
     </div>
