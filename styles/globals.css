@@ -196,3 +196,17 @@
 .poppins {
   font-family: "Poppins", sans-serif;
 }
+
+.dropdowncolor.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: var(--speed) ease;
+}
+
+.dropdowncolor.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: var(--speed) ease;
+}

@@ -373,7 +373,7 @@ const ColorWall = () => {
           );
         })}
       </div>
-      <p>{clipboard}</p>
+      <p className="absolute top-10">{clipboard}</p>
     </>
   );
 };

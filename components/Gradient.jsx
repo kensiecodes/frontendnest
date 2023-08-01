@@ -502,6 +502,25 @@ const ColorDropDown = ({ color, setColor, trim }) => {
 
   let menuRef = useRef();
 
+  const CustomSwatches = ({ isActive }) => {
+    const handleChange = (color, event) => {
+      color = {
+        hex: "#333",
+      };
+      setColor();
+    };
+
+    return (
+      <SwatchesPicker
+        colors={colors}
+        className={`dropdowncolor absolute z-50 ${
+          isActive ? "active" : "inactive"
+        }`}
+        onChange={handleChange}
+      />
+    );
+  };
+
   useEffect(() => {
     let handler = (event) => {
       if (!menuRef.current.contains(event.target)) {
@@ -516,41 +535,21 @@ const ColorDropDown = ({ color, setColor, trim }) => {
     setActive(!isActive);
   };
 
-  const background = "bg" + color.substring(trim);
+  const background = "bg" + color.substring(trim); //trims the string by a predetermined amount based on which color is selected
   console.log(background);
 
   return (
     <div className="" ref={menuRef}>
       <button
-        className={`bg-lime-300 m-1 w-12 h-12 rounded-md`}
+        className={`${background} m-1 w-24 h-24 rounded-md`}
         onClick={toggleMenu}
       ></button>
-      {isActive && (
-        <div className="z-10">
-          <CustomSwatches className="absolute z-50" />
-        </div>
-      )}
+      <div className="z-10">
+        <CustomSwatches isActive={isActive} />
+      </div>
     </div>
   );
 };
-
-class CustomSwatches extends React.Component {
-  handleChange(color, event) {
-    color = {
-      hex: "#333",
-    };
-  }
-
-  render() {
-    return (
-      <SwatchesPicker
-        colors={colors}
-        className="absolute z-[999]"
-        onChange={this.handleChange}
-      />
-    );
-  }
-}
 
 const ColorSelect = ({
   firstColor,
@@ -561,7 +560,7 @@ const ColorSelect = ({
   setLastColor,
 }) => {
   return (
-    <div className="bg-slate-200 rounded-2xl p-4 flex  drop-shadow-xl rounded-lg m-5  lg:w-screen h-50">
+    <div className="flex items-center justify-center bg-slate-200 p-4 flex  drop-shadow-xl rounded-lg m-5  lg:w-screen h-50">
       <ColorDropDown color={firstColor} setColor={setFirstColor} trim={4} />
       <ColorDropDown color={middleColor} setColor={setMiddleColor} trim={3} />
       <ColorDropDown color={lastColor} setColor={setLastColor} trim={2} />

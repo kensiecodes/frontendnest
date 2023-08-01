@@ -5,7 +5,7 @@ import "react-tooltip/dist/react-tooltip.css";
 
 const PackageCard = ({ pkgName, pkgPages }) => {
   return (
-    <div className="bg-slate-200 max-w-sm p-4 rounded-md drop-shadow-xl rounded-xl">
+    <div className="bg-slate-100/75 max-w-sm p-4 rounded-md drop-shadow-xl rounded-xl">
       <h1 className="text-2xl poppins bg-gradient-to-r from-indigo-300 to-fuchsia-400 bg-clip-text text-transparent mb-2 w-60">
         <a>{pkgName}</a>
       </h1>
