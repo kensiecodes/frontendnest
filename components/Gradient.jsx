@@ -600,7 +600,7 @@ const GradientUI = () => {
   const [direction, setDirection] = useState("bg-gradient-to-r");
   const [firstColor, setFirstColor] = useState("from-lime-300");
   const [middleColor, setMiddleColor] = useState("");
-  const [lastColor, setLastColor] = useState("to-cyan-300");
+  const [lastColor, setLastColor] = useState("to-sky-300");
   return (
     <>
       <div className="w-full flex flex-col lg:flex-row mx-auto relative z-10">
@@ -630,7 +630,7 @@ const GradientDirection = ({ direction, setDirection }) => {
     return (
       <li className="mb-1 m-auto">
         <button
-          className="bg-emerald-300 drop-shadow-lg hover:filter-none rounded-xl w-10 h-9 border-b border-teal-500 flex justify-center active:translate-y-0.5"
+          className="bg-indigo-50 drop-shadow-sm hover:filter-none rounded-xl w-10 h-9 border-b  flex justify-center transition ease-in-out duration-150 active:translate-y-0.5"
           onClick={onClick}
         >
           {children}
@@ -796,11 +796,32 @@ const ColorDropDown = ({ color, setColor, trim }) => {
   let menuRef = useRef();
 
   const CustomSwatches = ({ isActive }) => {
+    const convertHex = (hex) => {
+      let firstIndex;
+      let secondIndex;
+      let prefix;
+      if (trim === 4) {
+        prefix = "from";
+      } else if (trim === 3) {
+        prefix = "via";
+      } else if (trim === 2) {
+        prefix = "to";
+      }
+      for (let i = 0; i < colors.length; i++) {
+        const subArray = colors[i];
+        for (let j = 0; j < subArray.length; j++) {
+          if (subArray[j] === hex) {
+            firstIndex = i;
+            secondIndex = j;
+          }
+        }
+      }
+      console.log(prefix + tailwindColors[firstIndex][secondIndex]);
+      return prefix + tailwindColors[firstIndex][secondIndex];
+    };
+
     const handleChange = (color, event) => {
-      color = {
-        hex: "#333",
-      };
-      setColor(color);
+      setColor(convertHex(color.hex));
     };
 
     return (
@@ -818,7 +839,6 @@ const ColorDropDown = ({ color, setColor, trim }) => {
     let handler = (event) => {
       if (!menuRef.current.contains(event.target)) {
         setActive(false);
-        console.log(menuRef.current);
       }
     };
     document.addEventListener("mousedown", handler);
@@ -829,7 +849,6 @@ const ColorDropDown = ({ color, setColor, trim }) => {
   };
 
   const background = "bg" + color.substring(trim); //trims the string by a predetermined amount based on which color is selected
-  console.log(background);
 
   return (
     <div className="" ref={menuRef}>
@@ -853,29 +872,54 @@ const ColorSelect = ({
   lastColor,
   setLastColor,
 }) => {
+  const [hidden, setHidden] = useState(true);
+
+  const handleHidden = () => {
+    setHidden(!hidden);
+    hidden ? setMiddleColor("via-cyan-300") : setMiddleColor("");
+  };
+
   return (
     <div className="flex items-center justify-center bg-slate-200 p-4 flex  drop-shadow-xl rounded-lg m-5  lg:w-screen h-50">
       <ColorDropDown color={firstColor} setColor={setFirstColor} trim={4} />
-      <ColorDropDown color={middleColor} setColor={setMiddleColor} trim={3} />
+      {!hidden && (
+        <ColorDropDown color={middleColor} setColor={setMiddleColor} trim={3} />
+      )}
       <ColorDropDown color={lastColor} setColor={setLastColor} trim={2} />
+      {hidden && (
+        <p
+          onClick={handleHidden}
+          className="cursor-pointer text-slate-600 bg-indigo-50 rounded-xl text-bold text-4xl m-4 px-2"
+        >
+          +
+        </p>
+      )}
+      {!hidden && (
+        <p
+          onClick={handleHidden}
+          className="cursor-pointer text-slate-600 bg-indigo-50 rounded-xl text-bold text-4xl m-4 px-2"
+        >
+          -
+        </p>
+      )}
     </div>
   );
 };
 //color selection bar
 
 const GradientBar = ({ direction, firstColor, middleColor, lastColor }) => {
-  let blend = middleColor ? middleColor : "";
-  let gradientClasses = `${direction} ${firstColor} ${blend} ${lastColor}`;
+  let gradientClasses = `${direction} ${firstColor} ${middleColor} ${lastColor}`;
 
   return (
     <div className="w-full flex flex-col lg:flex-row mx-auto">
       <div className="bg-slate-200 p-10 drop-shadow-xl rounded-lg m-5  lg:w-screen h-80">
         <div
-          className={`${direction} ${firstColor} ${blend} ${lastColor} w-full h-full rounded`}
+          className={`${direction} ${firstColor} ${middleColor} ${lastColor} w-full h-full rounded`}
         ></div>
       </div>
-      <div className="text-xs martian drop-shadow-xl bg-slate-200 rounded-lg m-5 text-slate-700 lg:w-screen h-80">
-        <p className="p-2 mt-2 mx-2">{gradientClasses}</p>
+      <div className=" drop-shadow-xl bg-slate-200 rounded-lg m-5 text-slate-700 lg:w-screen h-80">
+        <h1 className="text-xl p-2 mt-2 mx-2">output</h1>
+        <p className="text-xs martian p-2 mt-1 mx-2">{gradientClasses}</p>
       </div>
     </div>
   );
