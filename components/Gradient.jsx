@@ -799,15 +799,19 @@ const GradientDirection = ({
             </ul>
           )}
         </div>
-        <p className="w-40 text-right px-1 self-start text-sm  text-slate-800">
+        <p className="w-40 text-center px-1 self-start text-sm  text-slate-800">
           Select both radial or regular gradients, and then select their
           orientation.
         </p>
         <div>
-          {copied && <p className="tooltip">Copied</p>}
+          {copied && (
+            <p className="tooltip transition ease-in-out duration-100 ">
+              Copied
+            </p>
+          )}
           <i
             onClick={copy}
-            class="rounded-lg p-1 text-2xl border border-2 border-slate-400 text-slate-500 fa-regular fa-copy"
+            class="rounded-lg p-1 text-2xl bg-indigo-50 p-2 text-slate-500 fa-regular fa-copy"
           ></i>
         </div>
       </div>
@@ -937,6 +941,16 @@ const ColorSelect = ({
 const GradientBar = ({ direction, firstColor, middleColor, lastColor }) => {
   let gradientClasses = `${direction} ${firstColor} ${middleColor} ${lastColor}`;
 
+  const [mode, setMode] = useState("bg-slate-100");
+
+  const handleClick = () => {
+    if (mode == "bg-slate-100") {
+      setMode("bg-slate-700");
+    } else if (mode == "bg-slate-700") {
+      setMode("bg-slate-100");
+    }
+  };
+
   return (
     <div className="w-full flex flex-col lg:flex-row mx-auto">
       <div className="bg-slate-200 p-10 drop-shadow-xl rounded-lg m-5  lg:w-screen h-80">
@@ -944,9 +958,21 @@ const GradientBar = ({ direction, firstColor, middleColor, lastColor }) => {
           className={`${direction} ${firstColor} ${middleColor} ${lastColor} w-full h-full rounded`}
         ></div>
       </div>
-      <div className=" drop-shadow-xl bg-slate-200 rounded-lg m-5 text-slate-700 lg:w-screen h-80">
-        <h1 className="text-xl p-2 mt-2 mx-2">output</h1>
-        <p className="text-xs martian p-2 mt-1 mx-2">{gradientClasses}</p>
+      <div
+        className={`flex-col items-center drop-shadow-xl ${mode} rounded-lg m-5 font-bold lg:w-screen h-80`}
+      >
+        <button
+          onClick={handleClick}
+          className=" bg-slate-200 rounded-xl text-slate-600 text-xl w-10 h-10 m-2 p-2"
+        >
+          <i className="fa-regular fa-lightbulb "></i>
+        </button>
+        <p
+          className={`text-center text-2xl p-5 mt-1 mx-2 text-transparent bg-clip-text ${gradientClasses}`}
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt
+        </p>
       </div>
     </div>
   );
