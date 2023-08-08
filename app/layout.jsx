@@ -4,18 +4,23 @@ import Nav from "@components/Nav";
 import Provider from "@components/Provider";
 
 export const metadata = {
-  title: "Tailwind Nest",
-  description: "Supercharge your Tailwind workflow",
+  title: "Nest",
+  description: "Supercharge your workflow",
 };
 
 const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@0;1&family=Martian+Mono:wght@300&family=Poppins:wght@800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@0;1&family=Martian+Mono:wght@300&family=Merriweather:wght@700&family=Poppins:wght@800&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@0;1&family=Martian+Mono:wght@300&family=Merriweather:wght@700&family=Poppins:wght@800&display=swap%&text=%E2%86%90%20%E2%86%99%20%E2%86%98%20%E2%86%97%20%E2%86%96%20%E2%86%91%20%E2%86%92%20%E2%86%93"
           rel="stylesheet"
         />
         <link

@@ -1,4 +1,6 @@
 "use client";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
 const colors = [
   [
@@ -584,16 +586,6 @@ const tailwindColors = [
 ]; //corresponds to colors array and holds the appropriate tailwind class to each selected color key in the swatch
 
 import React, { useState, useEffect, useRef } from "react";
-import {
-  East,
-  SouthEast,
-  South,
-  SouthWest,
-  West,
-  NorthWest,
-  North,
-  NorthEast,
-} from "./Directions"; //svg imports for direction key
 import { SwatchesPicker } from "react-color";
 
 const GradientUI = () => {
@@ -604,7 +596,13 @@ const GradientUI = () => {
   return (
     <>
       <div className="w-full flex flex-col lg:flex-row mx-auto relative z-10">
-        <GradientDirection direction={direction} setDirection={setDirection} />
+        <GradientDirection
+          direction={direction}
+          setDirection={setDirection}
+          firstColor={firstColor}
+          middleColor={middleColor}
+          lastColor={lastColor}
+        />
         <ColorSelect
           setFirstColor={setFirstColor}
           firstColor={firstColor}
@@ -625,12 +623,32 @@ const GradientUI = () => {
 };
 //holds state for all the gradient variables and initializes UI for page
 
-const GradientDirection = ({ direction, setDirection }) => {
+const GradientDirection = ({
+  direction,
+  setDirection,
+  firstColor,
+  middleColor,
+  lastColor,
+}) => {
+  let gradientClasses = `${direction} ${firstColor} ${middleColor} ${lastColor}`;
+
+  const [copied, setCopied] = useState(false);
+
+  const copy = () => {
+    navigator.clipboard.writeText(gradientClasses).then(
+      setCopied(true, () =>
+        setTimeout(() => {
+          setCopied(false);
+        }, 1000)
+      )
+    );
+  };
+
   const DirButton = ({ children, onClick }) => {
     return (
-      <li className="mb-1 m-auto">
+      <li className="mb-1 m-auto merriweather">
         <button
-          className="bg-indigo-50 drop-shadow-sm hover:filter-none rounded-xl w-10 h-9 border-b  flex justify-center transition ease-in-out duration-150 active:translate-y-0.5"
+          className="text-slate-600 text-2xl  bg-indigo-50 drop-shadow-sm hover:filter-none rounded-xl w-10 h-9 border-b  flex justify-center transition ease-in-out duration-150 active:translate-y-0.5"
           onClick={onClick}
         >
           {children}
@@ -672,7 +690,7 @@ const GradientDirection = ({ direction, setDirection }) => {
                   )
                 }
               >
-                <NorthWest className="mt-2" />
+                &#8598;
               </DirButton>
 
               <DirButton
@@ -682,7 +700,7 @@ const GradientDirection = ({ direction, setDirection }) => {
                   )
                 }
               >
-                <North className="" />
+                &#8593;
               </DirButton>
               <DirButton
                 onClick={() =>
@@ -691,7 +709,7 @@ const GradientDirection = ({ direction, setDirection }) => {
                   )
                 }
               >
-                <NorthEast className="" />
+                &#8599;
               </DirButton>
               <DirButton
                 onClick={() =>
@@ -700,7 +718,7 @@ const GradientDirection = ({ direction, setDirection }) => {
                   )
                 }
               >
-                <West className="" />
+                &#8592;
               </DirButton>
               <DirButton
                 onClick={() =>
@@ -709,7 +727,9 @@ const GradientDirection = ({ direction, setDirection }) => {
                   )
                 }
               >
-                <i class="fa-regular fa-circle text-black text-2xl m-auto"></i>
+                <p class="dmsans text-bold text-slate-600 text-xl m-auto uppercase">
+                  o
+                </p>
               </DirButton>
               <DirButton
                 onClick={() =>
@@ -718,7 +738,7 @@ const GradientDirection = ({ direction, setDirection }) => {
                   )
                 }
               >
-                <East className="" />
+                &#8594;
               </DirButton>
               <DirButton
                 onClick={() =>
@@ -727,7 +747,7 @@ const GradientDirection = ({ direction, setDirection }) => {
                   )
                 }
               >
-                <SouthWest className="" />
+                &#8601;
               </DirButton>
               <DirButton
                 onClick={() =>
@@ -736,7 +756,7 @@ const GradientDirection = ({ direction, setDirection }) => {
                   )
                 }
               >
-                <South className="" />
+                &#8595;
               </DirButton>
               <DirButton
                 onClick={() =>
@@ -745,36 +765,36 @@ const GradientDirection = ({ direction, setDirection }) => {
                   )
                 }
               >
-                <SouthEast className="" />
+                &#8600;
               </DirButton>
             </ul>
           )}
           {directionType == "default" && (
             <ul className=" grid grid-cols-3 grid-rows-3 ">
               <DirButton onClick={() => setDirection("bg-gradient-to-tl")}>
-                <NorthWest className="" />
+                <p className="merriweather">&#8598;</p>
               </DirButton>
               <DirButton onClick={() => setDirection("bg-gradient-to-t")}>
-                <North className="" />
+                &uarr;
               </DirButton>
               <DirButton onClick={() => setDirection("bg-gradient-to-tr")}>
-                <NorthEast className="" />
+                &#8599;
               </DirButton>
               <DirButton onClick={() => setDirection("bg-gradient-to-l")}>
-                <West className="" />
+                &#8592;
               </DirButton>
               <li className="w-[30px] "></li>
               <DirButton onClick={() => setDirection("bg-gradient-to-r")}>
-                <East className="" />
+                &#8594;
               </DirButton>
               <DirButton onClick={() => setDirection("bg-gradient-to-bl")}>
-                <SouthWest className="" />
+                &#8601;
               </DirButton>
               <DirButton onClick={() => setDirection("bg-gradient-to-b")}>
-                <South className="" />
+                &#8595;
               </DirButton>
               <DirButton onClick={() => setDirection("bg-gradient-to-br")}>
-                <SouthEast className="" />
+                &#8600;
               </DirButton>
             </ul>
           )}
@@ -783,6 +803,13 @@ const GradientDirection = ({ direction, setDirection }) => {
           Select both radial or regular gradients, and then select their
           orientation.
         </p>
+        <div>
+          {copied && <p className="tooltip">Copied</p>}
+          <i
+            onClick={copy}
+            class="rounded-lg p-1 text-2xl border border-2 border-slate-400 text-slate-500 fa-regular fa-copy"
+          ></i>
+        </div>
       </div>
     </div>
   );

@@ -197,6 +197,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+.merriweather {
+  font-family: "Merriweather", serif;
+}
+
 .dropdowncolor.active {
   opacity: 1;
   visibility: visible;
