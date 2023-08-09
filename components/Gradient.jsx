@@ -590,9 +590,9 @@ import { SwatchesPicker } from "react-color";
 
 const GradientUI = () => {
   const [direction, setDirection] = useState("bg-gradient-to-r");
-  const [firstColor, setFirstColor] = useState("from-lime-300");
+  const [firstColor, setFirstColor] = useState("from-violet-300");
   const [middleColor, setMiddleColor] = useState("");
-  const [lastColor, setLastColor] = useState("to-sky-300");
+  const [lastColor, setLastColor] = useState("to-teal-300");
   return (
     <>
       <div className="w-full flex flex-col lg:flex-row mx-auto relative z-10">
@@ -634,14 +634,16 @@ const GradientDirection = ({
 
   const [copied, setCopied] = useState(false);
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (copied) setCopied(false);
+    }, 1500);
+
+    return () => clearTimeout(timeout);
+  }, [copied]);
+
   const copy = () => {
-    navigator.clipboard.writeText(gradientClasses).then(
-      setCopied(true, () =>
-        setTimeout(() => {
-          setCopied(false);
-        }, 1000)
-      )
-    );
+    navigator.clipboard.writeText(gradientClasses).then(setCopied(true));
   };
 
   const DirButton = ({ children, onClick }) => {
@@ -660,27 +662,50 @@ const GradientDirection = ({
   const [directionType, setDirectionType] = useState("default");
   return (
     <div className="bg-slate-200 rounded-2xl p-4 flex-col drop-shadow-lg drop-shadow-xl rounded-lg m-5  lg:w-screen h-50">
-      <h2 className="poppins text-slate-500 mb-2 text-center">
-        Gradient Direction
-      </h2>
-      <div className="flex items-center">
+      {copied && (
+        <p className="absolute text-slate-700 border border-rose-400 bg-slate-100 z-99  border-2 rounded-md px-3 py-1 top-0 left-60">
+          Copied!
+        </p>
+      )}
+      <div className="flex items-between justify-between ">
+        <h2 className="poppins text-slate-500 mb-2 text-center">
+          Gradient Direction
+        </h2>
+        <div className="p-2">
+          <Tooltip id="help-tooltip" />
+
+          <button
+            data-tooltip-id="help-tooltip"
+            data-tooltip-content="Select both radial or regular gradients, and then select their
+          orientation."
+            className="mx-1 text-xl w-10 h-10 rounded-lg text-slate-600 bg-indigo-50"
+          >
+            <i class="fa-regular fa-circle-question"></i>
+          </button>
+
+          <button className="mx-1 text-xl w-10 h-10 rounded-lg text-slate-600 bg-indigo-50">
+            <i onClick={copy} class="fa-regular fa-copy"></i>
+          </button>
+        </div>
+      </div>
+      <div className="flex justify-center w-full">
         <div className="flex flex-col items-center justify-center mr-3">
           <div className="flex  lowercase">
             <p className="rotate-90 absolute hidden">Regular</p>
             <button
-              className="m-1 w-12 h-12 bg-gradient-to-l from-teal-100 to-teal-500 rounded-md border border-teal-500"
+              className="m-1 w-12 h-12 bg-gradient-to-l from-sky-100 to-indigo-500 rounded-md border border-slate-300"
               onClick={() => setDirectionType("default")}
             ></button>
           </div>
           <div className="flex lowercase">
             <p className="rotate-90 absolute hidden">Radial</p>
             <button
-              className="m-1 w-12 h-12 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-teal-100 to-teal-500 rounded-md border border-teal-500"
+              className="m-1 w-12 h-12 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-sky-100 to-indigo-500 rounded-md border border-slate-300"
               onClick={() => setDirectionType("radial")}
             ></button>
           </div>
         </div>
-        <div>
+        <div className="p-5">
           {directionType == "radial" && (
             <ul className=" grid grid-cols-3 grid-rows-3 ">
               <DirButton
@@ -798,21 +823,6 @@ const GradientDirection = ({
               </DirButton>
             </ul>
           )}
-        </div>
-        <p className="w-40 text-center px-1 self-start text-sm  text-slate-800">
-          Select both radial or regular gradients, and then select their
-          orientation.
-        </p>
-        <div>
-          {copied && (
-            <p className="tooltip transition ease-in-out duration-100 ">
-              Copied
-            </p>
-          )}
-          <i
-            onClick={copy}
-            class="rounded-lg p-1 text-2xl bg-indigo-50 p-2 text-slate-500 fa-regular fa-copy"
-          ></i>
         </div>
       </div>
     </div>
@@ -968,7 +978,7 @@ const GradientBar = ({ direction, firstColor, middleColor, lastColor }) => {
           <i className="fa-regular fa-lightbulb "></i>
         </button>
         <p
-          className={`text-center text-2xl p-5 mt-1 mx-2 text-transparent bg-clip-text ${gradientClasses}`}
+          className={`text-center text-2xl p-5 xl:p-10 mt-1 mx-2 text-transparent bg-clip-text ${gradientClasses}`}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt
