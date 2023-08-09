@@ -663,12 +663,12 @@ const GradientDirection = ({
   return (
     <div className="bg-slate-200 rounded-2xl p-4 flex-col drop-shadow-lg drop-shadow-xl rounded-lg m-5  lg:w-screen h-50">
       {copied && (
-        <p className="absolute text-slate-700 border border-rose-400 bg-slate-100 z-99  border-2 rounded-md px-3 py-1 top-0 left-60">
+        <p className="absolute text-slate-50 border border-rose-400 bg-rose-400 z-99  border-2 rounded-md px-3 py-1 top-24 right-4">
           Copied!
         </p>
       )}
       <div className="flex items-between justify-between ">
-        <h2 className="poppins text-slate-500 mb-2 text-center">
+        <h2 className="poppins text-slate-500 mb-2 mr-2 text-xl text-center">
           Gradient Direction
         </h2>
         <div className="p-2">
@@ -676,7 +676,7 @@ const GradientDirection = ({
 
           <button
             data-tooltip-id="help-tooltip"
-            data-tooltip-content="Select both radial or regular gradients, and then select their
+            data-tooltip-content="Select either radial or regular gradients, and then select the
           orientation."
             className="mx-1 text-xl w-10 h-10 rounded-lg text-slate-600 bg-indigo-50"
           >
@@ -705,7 +705,7 @@ const GradientDirection = ({
             ></button>
           </div>
         </div>
-        <div className="p-5">
+        <div className="px-5">
           {directionType == "radial" && (
             <ul className=" grid grid-cols-3 grid-rows-3 ">
               <DirButton
