@@ -358,7 +358,16 @@ const colors = [
 ];
 
 const ColorWall = () => {
-  const [clipboard, setClipboard] = useState("");
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (copied) setCopied(false);
+    }, 1500);
+
+    return () => clearTimeout(timeout);
+  }, [copied]);
+
   return (
     <>
       <div className="mb-10 mt-10 flex flex-col lg:flex-row">
@@ -368,17 +377,21 @@ const ColorWall = () => {
               key={`colorSet-${index}`}
               colorKey={el.color}
               blocksKey={el.blocks}
-              setClipboard={setClipboard}
+              setCopied={setCopied}
             />
           );
         })}
       </div>
-      <p className="absolute top-10">{clipboard}</p>
+      {copied && (
+        <p className="fixed top-20 bg-rose-400 px-2 py-1 text-slate-50 rounded-md">
+          Successfully copied hex code.
+        </p>
+      )}
     </>
   );
 };
 
-const ColorSet = ({ colorKey, blocksKey, setClipboard }) => {
+const ColorSet = ({ colorKey, blocksKey, setCopied }) => {
   return (
     <div className="flex lg:flex-col">
       <div
@@ -402,7 +415,7 @@ const ColorSet = ({ colorKey, blocksKey, setClipboard }) => {
               colorCode={colorSet.code}
               hexCode={colorSet.hex}
               textColor={textColor}
-              setClipboard={setClipboard}
+              setCopied={setCopied}
             />
           );
         })}
@@ -411,14 +424,9 @@ const ColorSet = ({ colorKey, blocksKey, setClipboard }) => {
   );
 };
 
-const ColorBlock = ({ colorCode, hexCode, textColor, setClipboard }) => {
+const ColorBlock = ({ colorCode, hexCode, textColor, setCopied }) => {
   const copy = () => {
-    navigator.clipboard.writeText(hexCode).then(
-      () => {
-        setInterval(setClipboard("Successfully copied hex code."), 3000);
-      },
-      () => {}
-    );
+    navigator.clipboard.writeText(hexCode).then(setCopied(true));
   };
   return (
     <div className={hexCode}>
