@@ -978,7 +978,7 @@ const GradientBar = ({ direction, firstColor, middleColor, lastColor }) => {
           <i className="fa-regular fa-lightbulb "></i>
         </button>
         <p
-          className={`text-center text-2xl p-5 xl:p-10 mt-1 mx-2 text-transparent bg-clip-text ${gradientClasses}`}
+          className={`text-center poppins text-2xl p-5 xl:p-10 mt-1 mx-2 text-transparent bg-clip-text ${gradientClasses}`}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt
