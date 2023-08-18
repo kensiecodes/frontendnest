@@ -16,7 +16,8 @@ const Home = () => {
         Nest is a one-stop suite for config files, palettes, components, and a
         configurable cheatsheets for common frontend packages and tools.
       </p>
-      <section className="max-sm:mx-16 mt-10 grid gap-2 lg:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <section className="max-sm:mx-16 mt-10 m-auto">
+        {/* grid gap-2 lg:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 */}
         <PackageCard
           pkgName="Tailwind Toolkit"
           pageLink="/colorwall"

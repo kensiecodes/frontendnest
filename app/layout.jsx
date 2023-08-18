@@ -39,6 +39,24 @@ const RootLayout = ({ children }) => {
           <main className="app">
             <Nav />
             {children}
+            <footer>
+              <p className="mt-16 mb-20 text-slate-700 text-center w-full">
+                Site made with{" "}
+                <i
+                  class="fa fa-heart"
+                  style={{ color: "#FF7070" }}
+                  aria-hidden="true"
+                ></i>{" "}
+                by{" "}
+                <a
+                  className="text-indigo-500"
+                  href="https://kensiejack.netlify.app/"
+                >
+                  Kensie Jack
+                </a>
+                .{" "}
+              </p>
+            </footer>
           </main>
         </Provider>
       </body>
