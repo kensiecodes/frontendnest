@@ -31,8 +31,14 @@ const Home = () => {
             {
               src: "/images/gradient.png",
               title: "Gradient Builder",
-              link: "gradient",
+              link: "/gradient",
               desc: "A gradient rule generator",
+            },
+            {
+              src: "/images/cheatsheet.png",
+              title: "Cheatsheet",
+              link: "/cheatsheet",
+              desc: "A class cheatsheet",
             },
           ]}
         />
