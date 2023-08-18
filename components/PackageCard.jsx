@@ -5,29 +5,31 @@ import "react-tooltip/dist/react-tooltip.css";
 
 const PackageCard = ({ pkgName, pkgPages }) => {
   return (
-    <div className="bg-slate-100/75 max-w-sm p-4 rounded-md drop-shadow-xl rounded-xl">
+    <div className="bg-slate-100/75 max-w-sm p-4 rounded-md drop-shadow-xl rounded-xl ">
       <h1 className="text-2xl poppins bg-gradient-to-r from-indigo-300 to-fuchsia-400 bg-clip-text text-transparent mb-2 w-60">
         <a>{pkgName}</a>
       </h1>
-      {pkgPages.map((page, index) => {
-        return (
-          <PackagePage
-            className=""
-            key={`${index}`}
-            img={page.src}
-            title={page.title}
-            desc={page.desc}
-            link={page.link}
-          />
-        );
-      })}
+      <div className="grid grid-cols-2 gap-1">
+        {pkgPages.map((page, index) => {
+          return (
+            <PackagePage
+              className=""
+              key={`${index}`}
+              img={page.src}
+              title={page.title}
+              desc={page.desc}
+              link={page.link}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
 
 const PackagePage = ({ link, img, title, desc }) => {
   return (
-    <div className="w-1/2 mx-1 my-3 p-1  rounded-xl bg-slate-50 ">
+    <div className="mx-1 my-3 p-1  rounded-xl bg-slate-50 ">
       <a href={link}>
         <img src={img} alt="article image" className="" />
       </a>
