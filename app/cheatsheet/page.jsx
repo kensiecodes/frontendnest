@@ -1,41 +1,98 @@
 const CheatSheet = () => {
+  const Title = ({ title }) => {
+    return <h2 className="py-2 px-4 text-xl">{title}</h2>;
+  };
   return (
     <main className="md:grid md:grid-cols-2 p-5 md:p-10 rounded text-slate-700 w-5/6 bg-indigo-50/50">
       <TopicSection>
-        <h2>.breakpoints</h2>
-        <div className="flex justify-between px-5 w-1/2">
+        <Title title=".breakpoints" />
+        <div className="flex justify-between px-5 w-3/4">
           <i class="fa-solid fa-mobile-screen"></i>
           <span className="text-indigo-400">sm:</span>
           <span className="text-slate-500">640px</span>
         </div>
-        <div className="flex justify-between px-5 w-1/2">
+        <div className="flex justify-between px-5 w-3/4">
           <i class="fa-solid fa-tablet-screen-button"></i>
           <span className="text-indigo-400">md:</span>
           <span className="text-slate-500">768px</span>
         </div>
-        <div className="flex justify-between px-5 w-1/2">
+        <div className="flex justify-between px-5 w-3/4">
           <i class="fa-solid fa-laptop"></i>
           <span className="text-indigo-400"> lg:</span>
           <span className="text-slate-500">1024px</span>
         </div>
-        <div className="flex justify-between px-5 w-1/2">
+        <div className="flex justify-between px-5 w-3/4">
           <i class="fa-solid fa-desktop"></i>
           <span className="text-indigo-400">xl:</span>
           <span className="text-slate-500"> 1280px</span>
         </div>
-        <div className="flex justify-between px-5 w-1/2">
+        <div className="flex justify-between px-5 w-3/4">
           <i class="fa-solid fa-display"></i>
           <span className="text-indigo-400">2xl:</span>
           <span className="text-slate-500">1536px</span>
         </div>
       </TopicSection>{" "}
+      <TopicSection>
+        <Title title=".border" />
+        <div className="p-5 w-90 flex justify-around ">
+          <div>
+            <div>
+              <p className=" pl-1 border-t-4 mb-1 border-l-4 border-indigo-400">
+                regular
+              </p>
+            </div>
+            <div>
+              <p className="pl-1 rounded-sm border-t-4 mb-1 border-l-4 border-indigo-400">
+                rounded-sm
+              </p>
+            </div>
+            <div>
+              <p className="pl-1 rounded border-t-4 mb-1 border-l-4 border-indigo-400">
+                rounded
+              </p>
+            </div>
+            <div>
+              <p className="pl-1 rounded-md border-t-4 mb-1 border-l-4 border-indigo-400">
+                rounded-md
+              </p>
+            </div>
+            <div>
+              <p className="pl-1 rounded-lg border-t-4 mb-1 border-l-4 border-indigo-400">
+                rounded-lg
+              </p>
+            </div>
+          </div>
+          <div>
+            <div>
+              <p className="pl-1 rounded-xl border-t-4 mb-1 border-l-4 border-indigo-400">
+                rounded-xl
+              </p>
+            </div>
+            <div>
+              <p className="pl-1 rounded-2xl border-t-4 mb-1 border-l-4 border-indigo-400">
+                rounded-2xl
+              </p>
+            </div>
+            <div>
+              <p className="pl-1 rounded-3xl border-t-4 mb-1 border-l-4 border-indigo-400">
+                rounded-3xl
+              </p>
+            </div>
+            <div>
+              <p className="pl-1 rounded-full border-t-4 mb-1 border-l-4 border-indigo-400">
+                rounded-full
+              </p>
+            </div>
+          </div>
+        </div>
+      </TopicSection>
     </main>
   );
 };
 
 const TopicSection = ({ children }) => {
   return (
-    <div className="bg-indigo-50/50 rounded border border-indigo-50 w-full">
+    <div className=" bg-indigo-50/50 rounded border border-indigo-50 w-full">
       {children}
     </div>
   );
