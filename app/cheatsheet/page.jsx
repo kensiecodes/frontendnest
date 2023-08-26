@@ -36,52 +36,34 @@ const CheatSheet = () => {
         <Title title=".border" />
         <div className="p-5 w-90 flex justify-around ">
           <div>
-            <div>
-              <p className=" pl-1 border-t-4 mb-1 border-l-4 border-indigo-400">
-                regular
-              </p>
+            <div className="h-16 flex justify-center items-center border-t-4 border-l-4 border-indigo-400">
+              <p className=" pl-1 mb-1 ">regular</p>
             </div>
-            <div>
-              <p className="pl-1 rounded-sm border-t-4 mb-1 border-l-4 border-indigo-400">
-                rounded-sm
-              </p>
+            <div className="h-16 flex justify-center items-center rounded-sm border-t-4 border-l-4 border-indigo-400">
+              <p className=" pl-1  mb-1 ">rounded-sm</p>
             </div>
-            <div>
-              <p className="pl-1 rounded border-t-4 mb-1 border-l-4 border-indigo-400">
-                rounded
-              </p>
+            <div className="h-16 flex justify-center items-center rounded border-t-4 border-l-4 border-indigo-400">
+              <p className=" pl-1 mb-1 ">rounded</p>
             </div>
-            <div>
-              <p className="pl-1 rounded-md border-t-4 mb-1 border-l-4 border-indigo-400">
-                rounded-md
-              </p>
+            <div className="h-16 flex justify-center items-center rounded-md border-t-4 border-l-4 border-indigo-400">
+              <p className=" pl-1 mb-1 ">rounded-md</p>
             </div>
-            <div>
-              <p className="pl-1 rounded-lg border-t-4 mb-1 border-l-4 border-indigo-400">
-                rounded-lg
-              </p>
+            <div className="h-16 flex justify-center items-center rounded-lg border-t-4 border-l-4 border-indigo-400">
+              <p className=" pl-1 mb-1 ">rounded-lg</p>
             </div>
           </div>
           <div>
-            <div>
-              <p className="pl-1 rounded-xl border-t-4 mb-1 border-l-4 border-indigo-400">
-                rounded-xl
-              </p>
+            <div className="h-16 flex justify-center items-center border-l-4 rounded-xl  border-indigo-400 border-t-4">
+              <p className=" pl-1  mb-1 ">rounded-xl</p>
             </div>
-            <div>
-              <p className="pl-1 rounded-2xl border-t-4 mb-1 border-l-4 border-indigo-400">
-                rounded-2xl
-              </p>
+            <div className="h-16 flex justify-center items-center rounded-2xl border-t-4 border-l-4 border-indigo-400">
+              <p className=" px-1  mb-1 ">rounded-2xl</p>
             </div>
-            <div>
-              <p className="pl-1 rounded-3xl border-t-4 mb-1 border-l-4 border-indigo-400">
-                rounded-3xl
-              </p>
+            <div className="h-16 flex justify-center items-center rounded-3xl border-t-4 border-l-4 border-indigo-400">
+              <p className=" px-1  mb-1 ">rounded-3xl</p>
             </div>
-            <div>
-              <p className="pl-1 rounded-full border-t-4 mb-1 border-l-4 border-indigo-400">
-                rounded-full
-              </p>
+            <div className="h-16 flex justify-center items-center border-t-4 border-l-4 border-indigo-400 rounded-full">
+              <p className=" px-1 mb-1 ">rounded-full</p>
             </div>
           </div>
         </div>
@@ -92,7 +74,7 @@ const CheatSheet = () => {
 
 const TopicSection = ({ children }) => {
   return (
-    <div className=" bg-indigo-50/50 rounded border border-indigo-50 w-full">
+    <div className="bg-indigo-50/50 rounded border border-indigo-50 w-full">
       {children}
     </div>
   );
