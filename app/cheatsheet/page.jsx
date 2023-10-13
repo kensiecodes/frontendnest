@@ -3,7 +3,7 @@ const CheatSheet = () => {
     return <h2 className="py-2 px-4 text-xl">{title}</h2>;
   };
   return (
-    <main className="md:grid md:grid-cols-2 p-5 md:p-10 rounded text-slate-700 w-5/6 bg-indigo-50/50">
+    <main className="md:grid md:grid-cols-2 gap-2 p-5 md:p-10 rounded text-slate-700 w-5/6 bg-indigo-50/50">
       <TopicSection>
         <Title title=".breakpoints" />
         <div className="flex justify-between px-5 w-3/4">
@@ -74,7 +74,7 @@ const CheatSheet = () => {
 
 const TopicSection = ({ children }) => {
   return (
-    <div className="bg-indigo-50/50 rounded border border-indigo-50 w-full">
+    <div className=" bg-indigo-50/50 rounded border border-indigo-50 w-full">
       {children}
     </div>
   );
