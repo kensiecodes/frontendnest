@@ -2,8 +2,14 @@
 
 import { useEffect, useState } from "react";
 
-
 const ColorWall = () => {
+  const colors = useEffect(async () => {
+    const response = await fetch("https://frontendnest.app.netlify/api/colors");
+    if (!response.ok) {
+      throw new Error("Could not retrieve colors");
+    }
+    return response.json();
+  });
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {

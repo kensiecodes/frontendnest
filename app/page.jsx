@@ -1,6 +1,4 @@
-import Feed from "@components/Feed";
-import ColorWall from "@components/ColorWall";
-import PackageCard from "@components/PackageCard";
+import PackageCard from "../components/PackageCard";
 
 // change Google domain info on cloud console
 

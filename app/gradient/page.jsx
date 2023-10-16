@@ -1,4 +1,4 @@
-import GradientUI from "@components/Gradient";
+import GradientUI from "../../components/Gradient";
 
 const Component = () => {
   return (

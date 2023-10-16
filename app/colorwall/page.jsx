@@ -1,6 +1,6 @@
 "use client";
 
-import ColorWall from "@components/ColorWall";
+import ColorWall from "../../components/ColorWall";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
